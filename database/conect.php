@@ -11,7 +11,6 @@ try {
         $user,
         $pass
     );
-    echo ". <br>";
     return $conexao;
 } catch (PDOException $e){
     echo "erro: " . $e->getMessage();

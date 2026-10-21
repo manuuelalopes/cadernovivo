@@ -1,11 +1,10 @@
 <?php
-require_once __DIR__ . '/includes/functions.php';
-
-$valor_total = $_POST['valor_total'] ?? 0;
-$produto_id = $_POST['produto_id'] ?? null;
+require_once __DIR__ . '/../includes/functions.php';
+require_once __DIR__ . '/../includes/verifica_user.php';
+verificar_autenticado(); // Apenas exige login
 
 // Código PIX Fictício aleatório
-$chave_pix_ficticia = "00020126580014br.gov.bcb.pix0136cadernovivo-pix-ficticio-123456785204000053039865405" . number_format($valor_total, 2, '', '') . "5802BR5913Caderno Vivo6009Sao Paulo62070503***6304E2CA";
+$chave_pix_ficticia = "00020126580014br.gov.bcb.pix0136cadernovivo-pix-ficticio-123456785204000053039865405"  . "5802BR5913Caderno Vivo6009Sao Paulo62070503***6304E2CA";
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -124,17 +123,15 @@ $chave_pix_ficticia = "00020126580014br.gov.bcb.pix0136cadernovivo-pix-ficticio-
 </head>
 
 <body>
-    <?php include 'includes/header.php'; ?>
+     <?php
+    include __DIR__ . '/../includes/header.php'
+    ?>
 
     <main>
         <div class="pix-card">
             <h1>Pagamento via PIX 
             </h1>
             <p>Escaneie o QR Code abaixo ou copie a chave PIX para pagar:</p>
-
-            <div class="price-tag">
-                R$ <?= number_format($valor_total, 2, ',', '.') ?>
-            </div>
 
             <div class="qrcode-box">
                 <!-- Imagem ilustrativa de QR Code via API pública -->
@@ -162,7 +159,7 @@ $chave_pix_ficticia = "00020126580014br.gov.bcb.pix0136cadernovivo-pix-ficticio-
         </div>
     </main>
 
-    <?php include 'includes/footer.php'; ?>
+    
 
     <script>
         function simularPagamento() {
@@ -184,6 +181,7 @@ $chave_pix_ficticia = "00020126580014br.gov.bcb.pix0136cadernovivo-pix-ficticio-
             }, 4000);
         }
     </script>
+    <?php include __DIR__ . '/../includes/footer.php' ?>
 </body>
 
 </html>

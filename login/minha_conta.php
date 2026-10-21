@@ -1,7 +1,8 @@
 <?php
 session_start();
 require_once __DIR__ . '/../includes/functions.php';
-require_once __DIR__ . '/../login/verifica_user.php';
+require_once __DIR__ . '/../includes/verifica_user.php';
+verificar_autenticado(); // Apenas exige login
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
