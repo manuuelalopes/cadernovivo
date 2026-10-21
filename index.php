@@ -1,3 +1,10 @@
+<?php 
+require_once __DIR__ . '/includes/functions.php'; // Certifique-se de incluir as funções/conexão aqui se não estiverem no header
+include __DIR__ . '/includes/header.php'; 
+
+// Busca os produtos no banco de dados
+$produtos = cartela_produtos($conexao);
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -124,106 +131,36 @@
         .card-produto .btn-comprar:hover {
             background-color: #d17088;
         }
-
-        /* --- BOTÃO VER TODOS OS PRODUTOS --- */
-        .container-btn-todos {
-            text-align: center;
-            margin-top: 35px;
-        }
-
-        .btn-ver-todos {
-            display: inline-block;
-            background-color: #d17088;
-            color: #ffffff;
-            padding: 12px 28px;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 25px;
-            text-decoration: none;
-            transition: background-color 0.2s, transform 0.2s;
-            box-shadow: 0 4px 8px rgba(209, 112, 136, 0.3);
-        }
-
-        .btn-ver-todos:hover {
-            background-color: #b5566e;
-            transform: scale(1.03);
-        }
     </style>
 </head>
 
 <body>
-    <?php include __DIR__ . '/includes/header.php';
-    cartela_produtos($conexao);
-     ?>
-    <!-- BANNER DE DESTAQUE -->
-    <div class="banner-principal">
-        <!-- Substitua 'sua-imagem-banner.jpg' pelo caminho da sua imagem real -->
+     <div class="banner-principal">
         <img src="https://via.placeholder.com/1200x350/f8d7da/5a3e36?text=Novidades+da+Semana" alt="Banner de Promoção CadernoVivo">
-    </div>
+        </div>
 
     <main class="secao-produtos">
         <h2>Produtos Mais Vendidos</h2>
-
         <div class="grid-produtos">
-
-            <!-- Produto 1 -->
-            <div class="card-produto">
-                <img src="https://via.placeholder.com/200" alt="Caderno">
-                <h3>Caderno Pautado A5</h3>
-                <p class="preco">R$ 29,90</p>
-                <a href="produto.php?id=1" class="btn-comprar">Ver Detalhes</a>
-            </div>
-
-            <!-- Produto 2 -->
-            <div class="card-produto">
-                <img src="https://via.placeholder.com/200" alt="Planner Semanal">
-                <h3>Planner Semanal Rosa</h3>
-                <p class="preco">R$ 45,00</p>
-                <a href="produto.php?id=2" class="btn-comprar">Ver Detalhes</a>
-            </div>
-
-            <!-- Produto 3 -->
-            <div class="card-produto">
-                <img src="https://via.placeholder.com/200" alt="Bloco de Notas">
-                <h3>Bloco de Notas A6</h3>
-                <p class="preco">R$ 15,90</p>
-                <a href="produto.php?id=3" class="btn-comprar">Ver Detalhes</a>
-            </div>
-
-            <!-- Produto 4 -->
-            <div class="card-produto">
-                <img src="https://via.placeholder.com/200" alt="Kit Canetas Pastel">
-                <h3>Kit Canetas Pastel</h3>
-                <p class="preco">R$ 32,50</p>
-                <a href="produto.php?id=4" class="btn-comprar">Ver Detalhes</a>
-            </div>
-
-            <div class="card-produto">
-                <img src="https://via.placeholder.com/200" alt="Caderno Pautado">
-                <h3>Caderno Pautado A5</h3>
-                <p class="preco">R$ 29,90</p>
-                <a href="produto.php?id=1" class="btn-comprar">Ver Detalhes</a>
-            </div>
-
-            <div class="card-produto">
-                <img src="https://via.placeholder.com/200" alt="Caderno Pautado">
-                <h3>Caderno Pautado A5</h3>
-                <p class="preco">R$ 29,90</p>
-                <a href="produto.php?id=1" class="btn-comprar">Ver Detalhes</a>
-            </div>
-
-            <div class="card-produto">
-                <img src="https://via.placeholder.com/200" alt="Caderno Pautado">
-                <h3>Caderno Pautado A5</h3>
-                <p class="preco">R$ 29,90</p>
-                <a href="produto.php?id=1" class="btn-comprar">Ver Detalhes</a>
-            </div>
-
+            <?php if (!empty($produtos)): ?>
+                <?php foreach ($produtos as $produto): ?>
+                    <div class="card-produto">
+                        <img src="<?= htmlspecialchars($produto['imagem_url']) ?>" alt="<?= htmlspecialchars($produto['nome_produto']) ?>">
+                        <h3><?= htmlspecialchars($produto['nome_produto']) ?></h3>
+                        <?php
+                        $preco = (float) str_replace(',', '.', (string) $produto['preco']);
+                        ?>
+                        <p class="preco">R$ <?= number_format($produto['preco'], 2, ',', '.') ?></p>
+                        <a href="produto.php?id=<?= (int) $produto['id'] ?>" class="btn-comprar">Ver Detalhes</a>
+                    </div>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <p style="text-align: center; grid-column: 1 / -1;">Nenhum produto cadastrado no momento.</p>
+            <?php endif; ?>
         </div>
 
     </main>
 
     <?php include __DIR__ . '/includes/footer.php'; ?>
 </body>
-
 </html>

@@ -79,31 +79,15 @@ function atualizar($conexao, $id,$nome_produto,$preco,$data_validade,$descricao,
  }
 
 // Cartela de produtos 
-function cartela_produtos($conexao){
-     
-        $sql = "SELECT * FROM produtos";
-        
-        try {
-            $stmt = $conexao->prepare($sql);
-            $stmt->execute();
-            
-            $produtos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            
-            foreach ($produtos as $produto) {
-                echo "ID: {$produto['id']} <br>";
-                echo "nome_produto: {$produto['nome_produto']} <br>";
-                echo "preco: {$produto['preco']} <br>";
-                echo "data_validade: {$produto['data_validade']} <br>";
-                echo "descricao: {$produto['descricao']} <br>";
-                echo "quantidade_estoq: {$produto['quantidade_estoq']} <br>";
-                $img = $produtos['imagem_url'];
-                echo"<img src='$img' alt='Descrição da imagem' width=200px height=200px /><br>";
-                echo "<hr>";
-                }
-                } catch (PDOException $e) {
-                    echo "Erro: " . $e->getMessage();
-                }
+function cartela_produtos(PDO $conexao): array
+{
+    $sql = "SELECT * FROM produtos";
+    $stmt = $conexao->prepare($sql);
+    $stmt->execute();
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
 // ---------------------------------------------------------------//
 //FUNÇOES LOGIN 
 
