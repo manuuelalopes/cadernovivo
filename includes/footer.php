@@ -57,9 +57,9 @@
         <p>&copy; <?php echo date('Y'); ?> CadernoVivo. Todos os direitos reservados.</p>
         
         <div class="footer-links">
-            <a href="/footer/sobre.php">Sobre nós</a> 
-            <a href="/footer/contato.php">Contato</a>
-            <a href="/footer/privacidade.php">Privacidade</a>
+            <a href="/cadernovivo/footer/sobre.php">Sobre nós</a> 
+            <a href="/cadernovivo/footer/contato.php">Contato</a>
+            <a href="/cadernovivo/footer/privacidade.php">Privacidade</a>
         </div>
     </div>
 </footer>
