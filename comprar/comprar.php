@@ -69,7 +69,7 @@ try {
         <!-- Formulário ou fluxo de pagamento aqui -->
         
         <p><a href="../index.php">Cancelar e voltar</a></p>
-        <p><a href="/comprar/pix.php">Gerar Codigo PIX </a></p>
+        <p><a href="/cadernovivo/comprar/pix.php">Gerar Codigo PIX </a></p>
     </main>
 </body>
 </html>
