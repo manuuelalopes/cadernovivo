@@ -296,30 +296,22 @@ Os requisitos são identificados como `RF-XXX` e `RNF-XXX`. A prioridade está c
 - PHP instalado e configurado;
 - PostgreSQL instalado e em execução;
 - Navegador web.
+- Git instalado na maquina
 
 ## Passo a Passo
 
-#### Passo 01. Baixar o projeto em sua máquina
+#### Passo 01. Clonar o Repositório
 
 - Copie a URL desse repositório
 ```bash
+# Clone este repositório
+git clone 
 
-```
-- Abra o Terminal, Prompt de Comando ou Git Bash no seu computador e navegue até a pasta onde deseja salvar o projeto:
-```bash
-cd caminho/pasta_desejada
-```
-
-- Execute o git clone:
-```bash
-
-```
-
-- Acesse a pasta:
-```bash
+# Acesse a pasta do projeto
 cd cadernovivo
-```
 
+```
+---
 #### Passo 2: Configurar o Banco de Dados
 Juntamente aos arquivos do projeto, você tem acesso ao dump do banco de dados `cadernovivo.sql`, você usará ele neste momento. Siga as instruções abaixo:
 
@@ -336,12 +328,12 @@ Juntamente aos arquivos do projeto, você tem acesso ao dump do banco de dados `
     psql -U postgres
     ```
 
-- Crie o banco de dados travely:
+- Crie o banco de dados cadernovivo (- Se o banco de dados já existir e for necessário recriá-lo, você pode apagá-lo e criar um novo para evitar conflitos. Dentro do terminal interativo do psql)
 ```bash
 CREATE DATABASE cadernovivo;
 ```
 
-- Crie o usuário travely com senha:
+- Crie o usuário cadernovivo com senha:
 ```bash
 CREATE USER cadernovivo WITH PASSWORD 'cadernovivo';
 ```
@@ -382,22 +374,18 @@ psql -U cadernovivo -d cadernovivo -f cadernovivo.sql
 ```
 > Consideração de Segurança: O uso do comando `chmod 777` concede permissões totais de leitura, escrita e execução para todos os usuários. Embora essa abordagem resolva de forma simples e imediata os bloqueios de envio de arquivos durante os testes no servidor local, não é a prática recomendada para ambientes de produção real, pois expõe o diretório a riscos de segurança (como a execução não autorizada de scripts).
 
-#### Passo 3: Configurar a conexão ao banco de dados
-- Na raiz do projeto, abra o arquivo `config.php`.
-- Ajuste as informações de acordo com sua configuração local do PostgreSQL, no caso, altere apenas o endereço de IP.
+#### Passo 3: Configurar a Conexão no PHP
+1 - Na pasta database, abra o arquivo connect.php.
+
+2 - Altere as credenciais para corresponderem às do seu ambiente local PostgreSQL:
+
 ```bash
-# EXEMPLO:
+$host = 'localhost';
+$port = '5432';
+$dbname = 'cadernovivo';
+$user = 'cadernovivo';
+$password = '123456';
 
-define('DB_HOST', 'localhost'); // Endereço IP do servidor PostgreSQL - exemplo: no local de 'localhost' insira '192.168.1.1' (seu endereço de IP).
-
-define('DB_PORT', '5432'); // NÃO ALTERE. Porta padrão do PostgreSQL
-
-define('DB_NAME', 'cadernovivo'); // NÃO ALTERE. Nome do banco de dados
-
-define('DB_USER', 'cadernovivo'); // NÃO ALTERE. Nome de usuário do banco de dados
-
-define('DB_PASS', 'cadernovivo'); // NÃO ALTERE. Senha do banco de dados
-?>
 ```
 
 #### Passo 4: Acessar a Aplicação
