@@ -193,7 +193,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 </head>
 
 <body>
-    <?php include '../includes/header.php'; ?>
+    <?php include '/../includes/header.php'; ?>
 
     <main>
         <div class="login-card">
@@ -227,7 +227,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         </div>
     </main>
 
-    <?php include '../includes/footer.php'; ?>
+    <?php include '/../includes/footer.php'; ?>
 </body>
 
 </html>

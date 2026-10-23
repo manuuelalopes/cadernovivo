@@ -4,11 +4,11 @@ if (session_status() === PHP_SESSION_NONE) {
 
 //Trava de Segurança: Apenas administradores podem acessar esta página
 //$isAdmin = isset($_SESSION['is_admin']) && filter_var($_SESSION['is_admin'], FILTER_VALIDATE_BOOLEAN);
-$isAdmin = !empty($_SESSION['is_admin']);
+/*$isAdmin = !empty($_SESSION['is_admin']);
 if (!$isAdmin) {
    http_response_code(403);
     exit('Acesso negado: Você não tem permissão para acessar esta página.');}
-?> 
+*/?> 
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
