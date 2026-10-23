@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../includes/functions.php';
-require_once __DIR__ . '/../includes/verifica_user.php';
+require_once __DIR__ . '/../login/verifica_user.php';
 verificar_autenticado(); // Apenas exige login
 
 // 1. Tratamento de Erro: Valida se o ID foi informado e se é um número inteiro válido
