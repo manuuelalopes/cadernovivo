@@ -1,6 +1,6 @@
 <?php require_once __DIR__ . '/../includes/functions.php';
 require_once __DIR__ . '/../login/verifica_user.php';
-//verificar_admin(); // Bloqueia quem não for admin
+//erificar_admin(); // Bloqueia quem não for admin
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

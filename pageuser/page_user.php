@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();}
 
 //Trava de Segurança: Apenas administradores podem acessar esta página
-//$isAdmin = isset($_SESSION['is_admin']) && filter_var($_SESSION['is_admin'], FILTER_VALIDATE_BOOLEAN);
+$isAdmin = isset($_SESSION['is_admin']) && filter_var($_SESSION['is_admin'], FILTER_VALIDATE_BOOLEAN);
 /*$isAdmin = !empty($_SESSION['is_admin']);
 if (!$isAdmin) {
    http_response_code(403);

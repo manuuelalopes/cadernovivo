@@ -50,8 +50,13 @@ require_once __DIR__ . '/../login/verifica_user.php';
     </header>
     <main>
         <?php
-        cartela_produtos($conexao);
-        ?>
+        $produtos = cartela_produtos($conexao);
+        foreach($produtos as $produto){
+        echo $produto['nome_produto']. "<br>";
+        echo $produto['preco']. "<br>";
+        echo $produto['descricao']. "<br>";
+        echo $produto['quantidade_estoq']. "<br>";}?>
+    
     </main>
     <?php include __DIR__ . '/../includes/footer.php'; ?>
 </body>

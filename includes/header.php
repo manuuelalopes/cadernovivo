@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 //var_dump($_SESSION['is_admin'] );
-//$isAdmin = isset($_SESSION['is_admin']) 
+$isAdmin = isset($_SESSION['is_admin']) 
 
 ?>
 <header> 
