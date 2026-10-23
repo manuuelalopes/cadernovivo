@@ -24,6 +24,7 @@
 3. [Execução do Projeto](#9-execução-do-projeto)
    - [Pré-requisitos](#pré-requisitos)
    - [Passo a Passo](#passo-a-passo)
+4. [Link do protótipo e Documentações de RN e RF] (#4-Link-para-documentação-de-protótipo-e-RFS-E-RNS:)
 
 
 ---
@@ -236,15 +237,14 @@ Os requisitos são identificados como `RF-XXX` e `RNF-XXX`. A prioridade está c
 - Validar as datas informadas para impedir que a data de término (data_fim) seja anterior à data de início (data_inicio);
 
 
-#### RF-011 — Excluir viagem
+#### RF-011 — Excluir produto
 **Prioridade:** Alta  
-**Descrição:** o sistema deve permitir que o usuário remova permanentemente um relato de viagem.
+**Descrição:** o sistema deve permitir que o usuário remova permanentemente produto de banco de dados.
 
 **Critérios de aceitação:**
-- O sistema deve pedir uma confirmação antes de apagar a viagem para evitar que a pessoa exclua por engano;
-- O sistema só deve permitir a exclusão se a viagem realmente pertencer à pessoa que está logada;
-- Ao apagar a viagem, o registro é removido do banco de dados e os arquivos das fotos são deletados;
-- A viagem excluída deve sumir da tela imediatamente e não aparecer mais em nenhuma opção.
+- O sistema só deve permitir a exclusão se a pessoa cadastrada for administradora;
+- Ao apagar o produto o registro é removido do banco de dados e os arquivos das fotos são deletados;
+- O produto excluído deve sumir da tela imediatamente e não aparecer mais em nenhuma opção.
 
 ---
 
@@ -252,44 +252,32 @@ Os requisitos são identificados como `RF-XXX` e `RNF-XXX`. A prioridade está c
 
 #### RF-012 — Consultar perfil
 **Prioridade:** Média  
-**Descrição:** o sistema deve permitir que o usuário autenticado visualize as informações de sua conta.
+**Descrição:** o sistema deve permitir que o usuário autenticado como administrador visualize as informações das contas dos clientes.
 
 **Critérios de aceitação:**
 - As informações mostradas na tela devem ser exatamente as da pessoa que está logada;
-- Dados protegidos, como a senha codificada (hash), não devem aparecer na tela.
+- Dados protegidos, não devem aparecer na tela.
 
 #### RF-013 — Atualizar perfil
 **Prioridade:** Alta  
-**Descrição:** o sistema deve permitir que o usuário altere seus dados cadastrais.
+**Descrição:** o sistema deve permitir que o usuário administrador altere os dados cadastrais de clientes.
 
 **Critérios de aceitação:**
-- O formulário de alteração já deve aparecer preenchido com as informações atuais da pessoa;
 - O sistema deve checar os novos dados digitados antes de salvar as alterações;
-- Se a pessoa trocar de e-mail, o sistema deve conferir se o novo e-mail já não pertence a outro usuário cadastrado;
 - As alterações salvas no banco de dados devem atualizar na hora as informações da conta logada.
 
 #### RF-014 — Excluir conta
 **Prioridade:** Alta  
-**Descrição:** o sistema deve permitir que o usuário exclua permanentemente o seu perfil da plataforma.
+**Descrição:** o sistema deve permitir que o usuário administrador exclua permanentemente algum perfil da plataforma.
 
 **Critérios de aceitação:**
-- O sistema deve identificar qual conta apagar usando apenas a sessão ativa ($_SESSION);
+- O sistema deve identificar qual conta apagar usando o id ou email;
 - O sistema deve pedir uma confirmação da pessoa antes de deletar a conta;
-- Ao apagar o perfil, o sistema deve fazer a exclusão completa: apagar o cadastro do usuário, todas as suas viagens no banco e todos os arquivos de foto salvos na pasta uploads;
+- Ao apagar o perfil, o sistema deve fazer a exclusão completa: apagar o cadastro do usuário.
 - Depois de apagar tudo, o sistema deve encerrar a sessão e mandar o usuário de volta para a tela inicial (index.php).
-
-#### RF-015 — Feedback das operações
-**Prioridade:** Média  
-**Descrição:** o sistema deve informar claramente o resultado de todas as ações executadas pelo usuário por meio de mensagens de sucesso ou erro exibidas.
-
-**Critérios de aceitação:**
-- Avisos de sucesso só devem aparecer depois que as informações forem realmente salvas no banco de dados;
-- Mensagens de erro devem usar um texto claro e fácil de entender (ex.: "Você só pode adicionar até 10 imagens por viagem!");
-- O sistema não deve mostrar detalhes técnicos ou erros do código (como comandos de SQL ou mensagens de erro do PHP) para o usuário.
-
 ---
 
-# 9. Execução do Projeto
+# 3. Execução do Projeto
 
 ## Pré-requisitos
 
@@ -398,5 +386,9 @@ php -S 0.0.0.0:8000
 
 
 ---
+# 4. Link para documentação de protótipo e RFS E RNS:
+```bash
+https://docs.google.com/document/d/171XYA-p7-CGgV4lwFjLFimNJqnHw9xMukEXUeOl64VE/edit?usp=sharing
+```
 
 **Fim da documentação. Obrigada pela atenção!**
