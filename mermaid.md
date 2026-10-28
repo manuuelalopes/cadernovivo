@@ -1,5 +1,5 @@
-```mermaid 
-erDiagram 
+```mermaid
+erDiagram
     produtos {
         int id_produto PK "NOT NULL"
         string nome_produto "NOT NULL"
@@ -9,22 +9,15 @@ erDiagram
         int quantidade_estoq "NOT NULL"
         string imagem_url "NOT NULL"
     }
-    
-    usuarios{
+
+    usuarios {
         int id_usuario PK "NOT NULL"
         string nome "NOT NULL"
         string telefone "NOT NULL"
-        text endereço "NOT NULL"
+        text endereco "NOT NULL"
         string senha "NOT NULL"
     }
 
-```
-
-
-
-
-
-
-
-
+    usuarios ||--o{ produtos : "pede"
+   
 ```
