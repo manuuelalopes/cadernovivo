@@ -389,6 +389,7 @@ php -S 0.0.0.0:8000
 # 4. Link para documentação de protótipo e RFS E RNS:
 ```bash
 https://docs.google.com/document/d/171XYA-p7-CGgV4lwFjLFimNJqnHw9xMukEXUeOl64VE/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/1LApH7H11SXbAvPM8cRtW67IHyyveoRRMAOslmJzcyrY/edit?gid=0#gid=0
 ```
 
 **Fim da documentação. Obrigada pela atenção!**
